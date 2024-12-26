@@ -1,3 +1,6 @@
+from app.logger import logger
+from app.utils import get_key
+from app.prompt import BASE_PROMPT
 import httpx
 import json
 from typing import Dict, Any, AsyncGenerator
@@ -51,3 +54,20 @@ async def stream(
                                 yield content
                         except json.JSONDecodeError:
                             continue
+
+
+async def answer(query: str, prompt: str = BASE_PROMPT, model: str = "deepseek/deepseek-chat") -> AsyncGenerator[str, None]:
+    try:
+        messages = [
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": query}
+        ]
+        async for chunk in stream(
+            api_key=get_key("OPENROUTER_API_KEY"),
+            messages=messages,
+            model=model
+        ):
+            yield chunk
+    except Exception as e:
+        logger.error(f"Error in deepseek: {str(e)}")
+        yield "[ERROR] Failed to get response from API"
