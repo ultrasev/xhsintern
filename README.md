@@ -1,11 +1,11 @@
-# 小红书写作助理 🌸
+# XiaoHongShu Content Assistant 🌸
 
-基于 AI 的小红书文案生成助手，（计划）轻松拿捏吸睛笔记！
+An AI-powered content generation assistant for XiaoHongShu (RED), engineered to craft engaging and viral-worthy posts with precision.
 
-## ✨ 特色功能
+## ✨ Key Features
 
-- 🎯 一键生成小红书风格文案
-- 📝 智能排版和标题优化
-- 🏷️ 自动生成话题标签
-- 🎨 多种写作风格可选
-- 📱 移动端友好界面
+- 🎯 One-click generation of platform-optimized content
+- 📝 Intelligent formatting and headline optimization
+- 🏷️ Automated hashtag generation with trend analysis
+- 🎨 Multiple content styles with NLP-driven personalization
+- 📱 Responsive mobile-first interface
