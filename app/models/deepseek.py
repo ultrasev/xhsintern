@@ -1,10 +1,12 @@
 from typing import Optional
 from .openrouter import post
 
-from utils import get_key
+from app.utils import get_key
+from app.logger import logger
+from app.prompt import BASE_PROMPT
 
 
-async def deepseek(query: str, prompt: str) -> Optional[str]:
+async def deepseek(query: str, prompt: str = BASE_PROMPT) -> Optional[str]:
     try:
         messages = [
             {"role": "system", "content": prompt},
@@ -18,5 +20,5 @@ async def deepseek(query: str, prompt: str) -> Optional[str]:
 
         return response.get("choices", [{}])[0].get("message", {}).get("content")
     except Exception as e:
-        print(f"Error in deepseek: {str(e)}")
+        logger.error(f"Error in deepseek: {str(e)}")
         return None
